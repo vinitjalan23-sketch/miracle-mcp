@@ -18,7 +18,7 @@ HEADERS = {
 }
 
 def query_supabase(table, limit=500, filters=None):
-    url = f"{SUPABASE_URL}/rest/v1/{table}?limit={limit}&order=row_num.asc"
+    url = f"{SUPABASE_URL}/rest/v1/{table}?limit={limit}"
     if filters:
         url += "&" + filters
     r = requests.get(url, headers=HEADERS)
@@ -26,7 +26,6 @@ def query_supabase(table, limit=500, filters=None):
         return r.json()
     return []
 
-# MCP Server metadata
 MCP_INFO = {
     "name": "miracle-accounting",
     "version": "1.0.0",
